@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- CS559 Workbook Pages - page content &copy; 2021, Michael Gleicher -->
+<!-- This page is part of a Workbook developed for the 
+    CS559 Computer Graphics Class at the University of Wisconsin
+    https://graphics.cs.wisc.edu/Courses/559-sp2021/ -->
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../css/workbook.css">
+        <script src="../../js/resizeIFrames.js"></script>
+    </head>
+    <body>
+        <div class="container container--outer"><div class="maincolumn">
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header"><h1 class="post__title">Page 3: Closure</h1>
+		</header>
+        
+        
+        
+		<div class="content post__content clearfix"><p>The nested scoping rules become more interesting when we start passing around those 
+functions we create. We&rsquo;ll still use boring toy programs for this page.
+We&rsquo;ll get to a real application soon.</p>
+<h2 id="closure-1">Closure 1</h2>
+<p>Here&rsquo;s a simple function inside of a function:
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+    <span style="color:#00a8c8">const</span> <span style="color:#75af00">g</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+        <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">g</span><span style="color:#111">);</span>
+<span style="color:#111">}</span>
+<span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
+<span style="color:#75af00">b</span><span style="color:#111">();</span>
+<span style="color:#75af00">b</span><span style="color:#111">();</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Some things to note here:</p>
+<ol>
+<li>the function <code>f</code> returns the function object that was stored in <code>g</code> (line 7)</li>
+<li>the function <code>g</code> is defined inside of <code>f</code> (lines 3-6)</li>
+<li>the variable <code>a</code> used inside of <code>g</code> is the one defined on line 2</li>
+<li>the variable <code>b</code> is assigned the result of <code>f</code> (which was the function formerly known as <code>g</code>)</li>
+<li>the function stored in <code>b</code> is called twice (on lines 10 and 11)</li>
+</ol>
+<p>Hopefully, it makes sense that this program will print 1 than 2. When we call the function stored in <code>b</code>, we are executing the function defined on lines 3-6 (which access the <code>a</code> variable, defined on line 2). The first time we call it, it increments <code>a</code> (which is 0, so it will get the value 1) and prints it (so it prints 1). The second time we call it, it increments <code>a</code> (which is 1, so it will get the value 2) and prints it.</p>
+<p>The thing to observe: the function object not only contains the code (lines 3-6) it also &ldquo;encloses&rdquo; the variable defined on line 2.</p>
+<h2 id="two-closures">Two Closures</h2>
+<p>OK, Same function, but we will use it twice
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+    <span style="color:#00a8c8">const</span> <span style="color:#75af00">g</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+        <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">g</span><span style="color:#111">);</span>
+<span style="color:#111">}</span>
+<span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
+<span style="color:#00a8c8">let</span> <span style="color:#75af00">c</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
+<span style="color:#75af00">b</span><span style="color:#111">();</span>
+<span style="color:#75af00">b</span><span style="color:#111">();</span>
+<span style="color:#75af00">c</span><span style="color:#111">();</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>If you understood the previous example, you should see that the two calls to <code>b</code> (lines 11 and 12) will print 1 and 2 respecitvely. Figuring out what line 13 prints is a little trickier, and requires us to really understand what the closure does.</p>
+<p>On line 9, we call the function <code>f</code> which uses the <code>function</code> keyword to create a &ldquo;function object&rdquo; that encloses the <code>a</code> variable defined on line 2.</p>
+<p>On line 10, we call the function <code>f</code> again, which repeats that process. This second time we call <code>f</code>, we get a &ldquo;new&rdquo; <code>a</code> variable (every time we call a function, we get a new &ldquo;copy&rdquo; of its local variables). When we call the <code>function</code> keyword, that creates another function object, which encloses that new <code>a</code> variable.</p>
+<p>So, by calling the <code>f</code> function twice, we&rsquo;ve created two different function objects (you can think of it as if we ran the compile to make a new function object twice, although the compiler really doesn&rsquo;t run twice). Each of those function objects encloses a different version of the <code>a</code> variable.</p>
+<p>So, line 13 prints 1. It is using the second function object. The <code>a</code> inside of the first function object was incremented twice already (on lines 11 and 12). But the <code>a</code> inside of the second function object (stored in the <code>c</code> variable) is a different <code>a</code> - it started from zero.</p>
+<p>That&rsquo;s closure.</p>
+<h2 id="closures-with-arguments">Closures with Arguments</h2>
+<p>Closure applies to function arguments as well - they are just like any other variables.</p>
+<p>Here&rsquo;s a toy example:
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#75af00">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">y</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#00a8c8">return</span> <span style="color:#75af00">x</span><span style="color:#f92672">+</span><span style="color:#75af00">y</span><span style="color:#111">;</span> <span style="color:#111">};</span>
+<span style="color:#111">}</span>
+<span style="color:#00a8c8">let</span> <span style="color:#75af00">a1</span> <span style="color:#f92672">=</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">let</span> <span style="color:#75af00">a3</span> <span style="color:#f92672">=</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">);</span>
+
+<span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a1</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#111">));</span>     <span style="color:#75715e">// prints 6
+</span><span style="color:#75715e"></span><span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a3</span><span style="color:#111">(</span><span style="color:#ae81ff">7</span><span style="color:#111">));</span>     <span style="color:#75715e">// prints 10
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>The <code>adder</code> function is a function that returns a function that adds an amount to its argument. Adder takes one argument <code>x</code>. It returns a function that takes one argument <code>y</code>. That function adds <code>x</code> and <code>y</code> together.</p>
+<p>On line 4, we set <code>a1</code> to be the function that adds its argument <code>y</code> to the value of <code>x</code> that is enclosed in it. In this case, <code>x</code> was 1 (the value of the parameter to <code>adder</code>).</p>
+<p>On line 5, we call <code>adder</code> again, to have it produce another function object. This time enclosing a different copy of <code>x</code> that happens to be set to 3.</p>
+<p>In this case, <code>x</code> isn&rsquo;t going to change (each different version of <code>x</code> is different, but those versions don&rsquo;t change their values). But it is important to remember that closures enclose the variable, not the value.</p>
+<h2 id="beyond-toy-examples">Beyond toy examples</h2>
+<p>Hopefully, these simple examples get the concepts of a closure across. We create function objects than &ldquo;enclose&rdquo; the variables around them.</p>
+<p>Closure can be a convenient way to write programs where we need to create functions (for example handler functions) that have private data. There are other ways to program these things, but once you understand closures, they are a useful tool.</p>
+<p>On the next page we&rsquo;ll look at a more realistic example.</p>
+
+            
+			
+		</div>
+	</article>
+</main>
+
+                </div>
+                <div class="sidebar">
+<h2 class="Side_Title">Debugger Workbook: A Tutorial on using the VS Code Debugger</h2>
+<p class="Side__Note">Pages:</p>
+<ul class="Side__List">
+    <li class="Side__Item Side__Unselected"><a href="../../">Index (Introduction)</a></li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/1/">1: A Simple Example </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/2/">2: Variables and Scope </a></li>
+        <li class="Side__Item Side__Selected"> 3: Closure </li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/4/">4: Closure Example </a></li>
+</ul>
+</div>
+</div>
+    </body>
+</html>

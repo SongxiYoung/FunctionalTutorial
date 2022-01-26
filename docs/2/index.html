@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- CS559 Workbook Pages - page content &copy; 2021, Michael Gleicher -->
+<!-- This page is part of a Workbook developed for the 
+    CS559 Computer Graphics Class at the University of Wisconsin
+    https://graphics.cs.wisc.edu/Courses/559-sp2021/ -->
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../css/workbook.css">
+        <script src="../../js/resizeIFrames.js"></script>
+    </head>
+    <body>
+        <div class="container container--outer"><div class="maincolumn">
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header"><h1 class="post__title">Page 2: Variables and Scope</h1>
+		</header>
+        
+        
+        
+		<div class="content post__content clearfix"><h2 id="javascript-variables">JavaScript Variables</h2>
+<p>Javascript has 3 main ways to declare variables: <code>let</code>, <code>const</code>, and <code>var</code>.</p>
+<p><code>var</code> is the old way to declare variables. Don&rsquo;t use it. It creates variables that object confusing rules. The lexical scoping rules discussed here do not apply. <code>var</code> is one of those legacies of the &ldquo;bad old days&rdquo; when JavaScript was a poorly designed language. Just don&rsquo;t use <code>var</code>.</p>
+<p>Technically, <code>function</code> canm also be used to declare variables. But think about
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">foo</span><span style="color:#111">(</span><span style="color:#75af00">arg</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#75715e">/* some code between the braces */</span> <span style="color:#111">}</span></code></pre></div>
+as equivalent to:
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">foo</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span> <span style="color:#111">(</span><span style="color:#75af00">arg</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#75715e">/* some code between the braces */</span> <span style="color:#111">};</span></code></pre></div>
+It&rsquo;s not exactly the same - but the differences are too small to worry about for us.</p>
+<p>Both <code>const</code> and <code>let</code> declare variables using the &ldquo;modern rules.&rdquo; They are what we should
+use in our JavaScript programs.</p>
+<h2 id="lexical-block-scope">Lexical Block Scope</h2>
+<p>The <em>Scope</em> of a variable is the range of the program where the variable can be &ldquo;seen&rdquo;.</p>
+<p>For <code>const</code> and <code>let</code> variables in JavaScript, the basic rules are fairly simple:</p>
+<ol>
+<li>Variables can only be seen after they have been declared.</li>
+<li>Variables can only be seen inside the block where they are declared. (a block is more or less a set of curly braces)</li>
+</ol>
+<p>You are probably used to this. It is the way most other programming languages work. For example&hellip;</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// this is before x is declared - and outside its block
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">true</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#75715e">// this is before x is declared
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">let</span> <span style="color:#75af00">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>  <span style="color:#75715e">// x is declared here
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// this is after x is declared - we can use it here
+</span><span style="color:#75715e"></span><span style="color:#111">}</span>
+<span style="color:#75715e">// this is outside of x&#39;s block - we can&#39;t use x here
+</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Based on Javascript&rsquo;s rules, we can use <code>x</code> on line 5, but not on 7, or 3, or 1. The <em>scope</em> of variable <code>x</code> is from where it is declared until the close brace (<code>}</code>) that ends the block it is declared in.</p>
+<p>That might seem so simple that I shouldn&rsquo;t have bothered to say it, but I want to be explicit about the notion of scope, because it can get more complicated. However, it isn&rsquo;t too complicated: we can always figure out the cope of a variable by reading the program. The variable is only in scope between where it is declared and the close brace.</p>
+<p>The complexity comes in because blocks nest - we can have blocks inside of blocks. Here&rsquo;s another toy example:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+<span style="color:#00a8c8">function</span> <span style="color:#75af00">foo</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75715e">// variable a is in scope, b and c are not
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+    <span style="color:#75715e">// a and b are in scope, c is not
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">true</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#75715e">// a and b are still in scope
+</span><span style="color:#75715e"></span>        <span style="color:#00a8c8">let</span> <span style="color:#75af00">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+        <span style="color:#75715e">// now all 3 variables are in scope
+</span><span style="color:#75715e"></span>    <span style="color:#111">}</span>
+    <span style="color:#75715e">// c is no longer in scope, only a and b are
+</span><span style="color:#75715e"></span><span style="color:#111">}</span>
+<span style="color:#75715e">// only a is in scope
+</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This example is only slightly trickier. 
+Notice that on line 3, we are in a new block, but <code>a</code> remains in scope.
+Similarly, on line 6 we start a new block, but the things that were in scope
+remain in scope.
+However, when we declare <code>c</code> in this inner block, its scope ends when the inner
+block ends (on line 10).</p>
+<p>Of course, we can re-use variable names. So here&rsquo;s a classic programming test question, what number does this program print?
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+
+<span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+<span style="color:#00a8c8">function</span> <span style="color:#75af00">g</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">true</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span>
+    <span style="color:#111">}</span>
+    <span style="color:#75af00">f</span><span style="color:#111">();</span>
+<span style="color:#111">}</span>
+<span style="color:#75af00">g</span><span style="color:#111">();</span>
+<span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>You should be able to figure out that it prints 1. The variable <code>a</code> inside the <code>f</code> function is the one defined on line 4. The variable <code>a</code> on line 9 is the one defined on line 7. When  <code>g</code> is called, it executes line 9 (setting the <code>a</code> variable on line 7 to the value 2), and it then calls the <code>f</code> function that changes the <code>a</code> variable on line 1.</p>
+<p>Of course, this can be even trickier since we can define functions inside of functions.
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+    <span style="color:#00a8c8">function</span> <span style="color:#75af00">g</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">function</span> <span style="color:#75af00">h</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#111">;</span>
+    <span style="color:#111">}</span>
+    <span style="color:#75af00">g</span><span style="color:#111">();</span>
+    <span style="color:#75af00">h</span><span style="color:#111">();</span>
+    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
+<span style="color:#111">}</span>
+<span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">);</span></code></pre></td></tr></table>
+</div>
+</div>
+You should be able to figure out that this prints 2. The <code>a</code> on line 4 is in scope from lines 4 to 6. The <code>a</code> on line 8 comes from its enclosing block (the <code>a</code> on line 2). Similarly, the <code>a</code> on line 12 is the <code>a</code> from line 2.</p>
+<p>These examples didn&rsquo;t consider arguments. But basically, function arguments are the same as variables declared right at the beginning of the block.</p>
+<p>Next, we&rsquo;ll see how this leads to closures.</p>
+
+            
+			
+		</div>
+	</article>
+</main>
+
+                </div>
+                <div class="sidebar">
+<h2 class="Side_Title">Debugger Workbook: A Tutorial on using the VS Code Debugger</h2>
+<p class="Side__Note">Pages:</p>
+<ul class="Side__List">
+    <li class="Side__Item Side__Unselected"><a href="../../">Index (Introduction)</a></li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/1/">1: A Simple Example </a></li>
+        <li class="Side__Item Side__Selected"> 2: Variables and Scope </li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/3/">3: Closure </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/4/">4: Closure Example </a></li>
+</ul>
+</div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- CS559 Workbook Pages - page content &copy; 2021, Michael Gleicher -->
+<!-- This page is part of a Workbook developed for the 
+    CS559 Computer Graphics Class at the University of Wisconsin
+    https://graphics.cs.wisc.edu/Courses/559-sp2021/ -->
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../css/workbook.css">
+        <script src="../../js/resizeIFrames.js"></script>
+    </head>
+    <body>
+        <div class="container container--outer"><div class="maincolumn">
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header"><h1 class="post__title">Page 1: A Simple Example</h1>
+		</header>
+        
+        
+        
+		<div class="content post__content clearfix"><p>We&rsquo;ll work up from the pieces, just to remember the JavaScript basics.</p>
+<h2 id="functions-in-javascript">Functions in JavaScript</h2>
+<p>We want to write a program that responds when a button is pressed. 
+This requires use to define a &ldquo;handler&rdquo; (or &ldquo;callback&rdquo;) function that is
+called when the button is clicked.</p>
+<p><a href="../../for_students/F-01-01.html" class="for_students">F-01-01.html</a> and <a href="../../for_students/F-01-01.js" class="for_students">F-01-01.js</a>
+are a very simple program that does something when the button is pressed.</p>
+<p>Before trying it, read the code and make sure you can predict what it is going to do:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">function</span> <span style="color:#75af00">handler</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<iframe
+    title="F-01-01"
+    src="../../for_students/F-01-01.html"
+    class="includebox includebox-standard"
+    width="100%"
+    height="100%"
+    scrolling="no"
+    frameborder="0"
+></iframe>
+
+<p>A few things to notice&hellip;</p>
+<ol>
+<li>Line 1 declares a <code>const</code> variable named <code>button</code>. We declare it as a <code>const</code> since we know it isn&rsquo;t going to change. We could have made it a regular variable by using <code>let</code> instead. By declaring it as const we tell the compiler that it won&rsquo;t change, so the compiler can warn us if we try to change it by mistake. It also provides documentation to the reader of the program that this variable won&rsquo;t change value.</li>
+<li>The <code>button</code> variable is <em>file scoped.</em> You can think of it as a global variable (but global to this file).</li>
+<li>Line 2 declares function called <code>handler</code>. When the function is called, line 3 is executed.</li>
+<li>Line 3 is only executed when <code>handler</code> is called. It uses that &ldquo;global&rdquo; (file scoped) variable that we defined back on line 1. Functions have access to variables defined above them (assuming they aren&rsquo;t in some local scope).</li>
+<li>Line 3 assigns the value &ldquo;Changed !&rdquo; to the <code>innerHTML</code> slot (member variable) of button (which we assume is an object that has an <code>innerHTML</code> slot).</li>
+<li>Line 5 assigns the <code>handler</code> function to the <code>onclick</code> slot of button.</li>
+<li>I just happened to know that if you assign a function to the <code>onclick</code> slot of a button, it will get called when the button is pressed.</li>
+</ol>
+<p>That last step deserves some mention. We should think of the <code>handler</code> function as a special kind of object. Line 5 assigns that object (or a reference to that object) to the member variable.</p>
+<p>Javascript lets us re-write line 2 in a different way that might make this clearer:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>This is equivalent, but exposes what function declaration does. Think about declaring a function as the <code>function</code> keyword is a function that runs the compiler (on the code that follows it) and returns a &ldquo;function object&rdquo;. In this case, we assign that object to the variable <code>handler</code>.</p>
+<p>Getting used to this idea that a function is just an object is important in JavaScript.</p>
+<p>Because we are just using this function in one place, we don&rsquo;t even need to both to 
+assign it to a variable or give it a name. We can simply assign it directly to the slot
+where we need it:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>The important thing here: functions are just objects, just like strings and numbers and buttons. They can be created, assigned to variables, passed as arguments to functions, &hellip;</p>
+<h2 id="arguments">Arguments</h2>
+<p>Let&rsquo;s make an html file with two buttons (<a href="../../for_students/F-01-02.html" class="for_students">F-01-02.html</a>), and extend the first example.</p>
+<p>Here is that code applied to both buttons. Since I am using the function twice, it is useful to store it in a variable, although I could have written <code>button2.onclick = button1.onclick</code>.</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button1</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">const</span> <span style="color:#75af00">button2</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">button1</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+<span style="color:#75af00">button1</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
+<span style="color:#75af00">button2</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>Again, understand what this program <a href="../../for_students/F-01-02.js" class="for_students">F-01-02.js</a> does before trying it. It doesn&rsquo;t do what you probably would want it to do.</p>
+<iframe
+    title="F-01-02"
+    src="../../for_students/F-01-02.html"
+    class="includebox includebox-standard"
+    width="100%"
+    height="100%"
+    scrolling="no"
+    frameborder="0"
+></iframe>
+
+<p>Suppose we wanted the button clicked to change itself. We could define different functions for each button, that would be painful if we had lots of buttons, or if the code that the buttons had to run was complicated.</p>
+<p>A better answer is to take advantage of the fact that handlers get an &ldquo;event&rdquo; object as an argument, and the &ldquo;event&rdquo; object know what html element is getting the event. So, <a href="../../for_students/F-01-03.html" class="for_students">F-01-03.html</a> <a href="../../for_students/F-01-03.js" class="for_students">F-01-03.js</a> will do the &ldquo;right&rdquo; thing.</p>
+<iframe
+    title="F-01-03"
+    src="../../for_students/F-01-03.html"
+    class="includebox includebox-standard"
+    width="100%"
+    height="100%"
+    scrolling="no"
+    frameborder="0"
+></iframe>
+
+<p>The changed lines:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">event</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">target</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>Show you that you that event handler functions receive an argument (that is the event), and that these events have target elements.</p>
+<p>You might wonder, &ldquo;why did the previous version work at all?&rdquo; In the example above (<a href="../../for_students/F-01-02.js" class="for_students">F-01-02.js</a>) the button click did pass the event argument to the handler function - the handler function just ignored it (by not taking any arguments).</p>
+<h2 id="a-gratuitous-closure">A Gratuitous Closure</h2>
+<p>How could we have written the previous program if we didn&rsquo;t know about events?</p>
+<p>Here&rsquo;s one way: (the code is <a href="../../for_students/F-01-04.js" class="for_students">F-01-04.js</a>)</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button1</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">const</span> <span style="color:#75af00">button2</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">);</span>
+
+<span style="color:#00a8c8">function</span> <span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+    <span style="color:#111">}</span>
+    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
+<span style="color:#111">}</span>
+
+<span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button1</span><span style="color:#111">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>The most obvious difference here is that we are defining a function <code>setHandler</code> 
+that &ldquo;sets up&rdquo; a button. It takes a button as an argument, and sets the <code>onclick</code> 
+slot of the button.</p>
+<p>There are (at least) two things here that may be slightly weird:</p>
+<ol>
+<li>We define a function inside of the function. Line 5 effectively runs the compiler each time the <code>setHandler</code> function is called. Because <code>setHandler</code> is called twice (lines 10 and 11), the compiler will compile that code twice. A good compiler is probably smart enough that it probably doesn&rsquo;t actually compile the code multiple times, but conceptually, you can think about the compiler being run twice.</li>
+<li>The inner <code>handler</code> function uses the <code>button</code> variable that belongs to <code>setHandler</code>. Arguments (like <code>button</code>) are just variables, and obey the same scoping rules.</li>
+</ol>
+<p>This is a little tricky. Basically, for each button, we call <code>setHandler</code> to set it up. <code>setHandler</code> knows which button it is working on, because it has the button in its <code>button</code> parameter. <code>setHandler</code> runs the compiler and makes a new version of the handler function that it assigns to the button. This version has the right value for <code>button</code>.</p>
+<p>When we ran the compiler on line 5, the value of <code>button</code> had an appropriate value. That value was &ldquo;enclosed&rdquo; inside of the function object that was created. This idea of enclosing variables when functions are defined is called <strong>closure</strong>.</p>
+<p>If you need to be convinced that this works:</p>
+<iframe
+    title="F-01-04"
+    src="../../for_students/F-01-04.html"
+    class="includebox includebox-standard"
+    width="100%"
+    height="100%"
+    scrolling="no"
+    frameborder="0"
+></iframe>
+
+<p>The important concept here is that when we define a function, that function has access to the variables &ldquo;around it&rdquo; (defined above and outside the function). You can access &ldquo;global&rdquo; (or file scoped variables). And, you can access variables in enclosing scopes.</p>
+<h2 id="summary-of-page-1">Summary of Page 1</h2>
+<p>The lessons here:</p>
+<ol>
+<li>Think of functions as objects that are created, stored in variables, passed as function arguments - just like other objects.</li>
+<li>Think of the <code>function</code> keyword as something that runs the compiler on the code (while the script is executing) and produces a value (a function object)</li>
+<li>When a function object is created, it remembers the variables that enclose it. (it actually remembers the variables, not the values - but we&rsquo;ll see that on a later page)</li>
+</ol>
+<p>On the next page we&rsquo;ll review the concept of scope to get a better sense of what is enclosed.</p>
+
+            
+			
+		</div>
+	</article>
+</main>
+
+                </div>
+                <div class="sidebar">
+<h2 class="Side_Title">Debugger Workbook: A Tutorial on using the VS Code Debugger</h2>
+<p class="Side__Note">Pages:</p>
+<ul class="Side__List">
+    <li class="Side__Item Side__Unselected"><a href="../../">Index (Introduction)</a></li>
+        <li class="Side__Item Side__Selected"> 1: A Simple Example </li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/2/">2: Variables and Scope </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/3/">3: Closure </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="../../docs/4/">4: Closure Example </a></li>
+</ul>
+</div>
+</div>
+    </body>
+</html>
