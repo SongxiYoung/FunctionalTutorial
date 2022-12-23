@@ -20,75 +20,75 @@
         
         
 		<div class="content post__content clearfix"><p>Here is a variant of the example from the last page. I am making two counters that count different things. First, read the code and see if you can understand what it does. Then try it and see if your understanding is correct. Some explanations follow. The files are <a href="../../for_students/F-05-01.html" class="for_students">F-05-01.html</a> and <a href="../../for_students/F-05-01.js" class="for_students">F-05-01.js</a>, but I&rsquo;ll put the code here so we can refer to it</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// this function transforms a row of buttons
-</span><span style="color:#75715e"></span><span style="color:#00a8c8">function</span> <span style="color:#75af00">makeCounters</span><span style="color:#111">(</span><span style="color:#75af00">listOfButtonNames</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-    <span style="color:#75715e">// keep track of the total presses
-</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">let</span> <span style="color:#75af00">totalCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
-
-    <span style="color:#75715e">// we define the makeCounter function here so it has access to the 
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// total Count
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// the function takes the id of the button
-</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">function</span> <span style="color:#75af00">makeCounter</span><span style="color:#111">(</span><span style="color:#75af00">buttonName</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-        <span style="color:#75715e">// these two variables with be inside the closure of the
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">// handler function
-</span><span style="color:#75715e"></span>        <span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#75af00">buttonName</span><span style="color:#111">);</span>
-        <span style="color:#00a8c8">let</span> <span style="color:#75af00">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
-
-        <span style="color:#75715e">// now we can define the handler that uses those two variables
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">// when the function is created, it will enclose those variables
-</span><span style="color:#75715e"></span>        <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-            <span style="color:#75af00">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>         <span style="color:#75715e">// note that we have access to both count and total count
-</span><span style="color:#75715e"></span>            <span style="color:#75af00">totalCount</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
-            <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">`</span><span style="color:#d88200">${</span><span style="color:#75af00">count</span><span style="color:#d88200">}</span><span style="color:#d88200"> - </span><span style="color:#d88200">${</span><span style="color:#75af00">totalCount</span><span style="color:#d88200">}</span><span style="color:#d88200">`</span><span style="color:#111">;</span>
-        <span style="color:#111">}</span>
-    <span style="color:#111">}</span>
-    <span style="color:#75715e">// now we need to apply that function to the buttons, I&#39;ll do it
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// with a loop
-</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">let</span> <span style="color:#75af00">buttonName</span> <span style="color:#00a8c8">of</span> <span style="color:#75af00">listOfButtonNames</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-        <span style="color:#75af00">makeCounter</span><span style="color:#111">(</span><span style="color:#75af00">buttonName</span><span style="color:#111">);</span>
-    <span style="color:#111">}</span>
-<span style="color:#111">}</span>
-
-<span style="color:#75715e">// we can apply this to both rows
-</span><span style="color:#75715e"></span><span style="color:#75af00">makeCounters</span><span style="color:#111">([</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button3&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button4&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button5&#34;</span><span style="color:#111">]);</span>
-<span style="color:#75af00">makeCounters</span><span style="color:#111">([</span><span style="color:#d88200">&#34;buttonA&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonB&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonC&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonD&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonE&#34;</span><span style="color:#111">]);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// this function transforms a row of buttons
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#00a8c8">function</span> <span style="color:#75af00">makeCounters</span><span style="color:#111">(</span><span style="color:#75af00">listOfButtonNames</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// keep track of the total presses
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">let</span> <span style="color:#75af00">totalCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// we define the makeCounter function here so it has access to the 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// total Count
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// the function takes the id of the button
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">function</span> <span style="color:#75af00">makeCounter</span><span style="color:#111">(</span><span style="color:#75af00">buttonName</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// these two variables with be inside the closure of the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// handler function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#75af00">buttonName</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">let</span> <span style="color:#75af00">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// now we can define the handler that uses those two variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// when the function is created, it will enclose those variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75af00">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>         <span style="color:#75715e">// note that we have access to both count and total count
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75af00">totalCount</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">`</span><span style="color:#d88200">${</span><span style="color:#75af00">count</span><span style="color:#d88200">}</span><span style="color:#d88200"> - </span><span style="color:#d88200">${</span><span style="color:#75af00">totalCount</span><span style="color:#d88200">}</span><span style="color:#d88200">`</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// now we need to apply that function to the buttons, I&#39;ll do it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// with a loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">let</span> <span style="color:#75af00">buttonName</span> <span style="color:#00a8c8">of</span> <span style="color:#75af00">listOfButtonNames</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">makeCounter</span><span style="color:#111">(</span><span style="color:#75af00">buttonName</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// we can apply this to both rows
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75af00">makeCounters</span><span style="color:#111">([</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button3&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button4&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;button5&#34;</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">makeCounters</span><span style="color:#111">([</span><span style="color:#d88200">&#34;buttonA&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonB&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonC&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonD&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;buttonE&#34;</span><span style="color:#111">]);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>And here it is running&hellip;</p>
@@ -114,20 +114,20 @@
 </ol>
 <p>In my mind, this is a useful use of a closure. Yes, I could have written this by creating objects for each button (that store counters) and for each row (to store the &ldquo;total count&rdquo;). But that would have required defining two classes of objects, &hellip; I find the closure to be concise. But it is a style thing. You rarely need to use a closure - there is always some other way to do it. Closures are just often an elegant solution.</p>
 <p>That said, the use of closures for the <code>button</code> variable (line 20) is gratuitious. This inner function probably should have been written:
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">event</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-        <span style="color:#75af00">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
-        <span style="color:#75af00">totalCount</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
-        <span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">target</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">`</span><span style="color:#d88200">${</span><span style="color:#75af00">count</span><span style="color:#d88200">}</span><span style="color:#d88200"> - </span><span style="color:#d88200">${</span><span style="color:#75af00">totalCount</span><span style="color:#d88200">}</span><span style="color:#d88200">`</span><span style="color:#111">;</span>
-    <span style="color:#111">}</span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">event</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">count</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">totalCount</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">target</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">`</span><span style="color:#d88200">${</span><span style="color:#75af00">count</span><span style="color:#d88200">}</span><span style="color:#d88200"> - </span><span style="color:#d88200">${</span><span style="color:#75af00">totalCount</span><span style="color:#d88200">}</span><span style="color:#d88200">`</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 Because the use of <code>button</code> makes the assumption that button isn&rsquo;t going to change. But I used a closure because this workbook is about practicing closures.</p>

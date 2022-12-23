@@ -21,26 +21,26 @@
         
 		<div class="content post__content clearfix"><p>We&rsquo;ll work up from the pieces, just to remember the JavaScript basics.</p>
 <h2 id="functions-in-javascript">Functions in JavaScript</h2>
-<p>We want to write a program that responds when a button is pressed. 
+<p>We want to write a program that responds when a button is pressed.
 This requires use to define a &ldquo;handler&rdquo; (or &ldquo;callback&rdquo;) function that is
 called when the button is clicked.</p>
 <p><a href="../../for_students/F-01-01.html" class="for_students">F-01-01.html</a> and <a href="../../for_students/F-01-01.js" class="for_students">F-01-01.js</a>
 are a very simple program that does something when the button is pressed.</p>
 <p>Before trying it, read the code and make sure you can predict what it is going to do:</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
-<span style="color:#00a8c8">function</span> <span style="color:#75af00">handler</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
-<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">function</span> <span style="color:#75af00">handler</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <iframe
@@ -65,62 +65,62 @@ are a very simple program that does something when the button is pressed.</p>
 </ol>
 <p>That last step deserves some mention. We should think of the <code>handler</code> function as a special kind of object. Line 5 assigns that object (or a reference to that object) to the member variable.</p>
 <p>Javascript lets us re-write line 2 in a different way that might make this clearer:</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>This is equivalent, but exposes what function declaration does. Think about declaring a function as the <code>function</code> keyword is a function that runs the compiler (on the code that follows it) and returns a &ldquo;function object&rdquo;. In this case, we assign that object to the variable <code>handler</code>.</p>
 <p>Getting used to this idea that a function is just an object is important in JavaScript.</p>
-<p>Because we are just using this function in one place, we don&rsquo;t even need to both to 
+<p>Because we are just using this function in one place, we don&rsquo;t even need to both to
 assign it to a variable or give it a name. We can simply assign it directly to the slot
 where we need it:</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
-<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">button</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>The important thing here: functions are just objects, just like strings and numbers and buttons. They can be created, assigned to variables, passed as arguments to functions, &hellip;</p>
 <h2 id="arguments">Arguments</h2>
 <p>Let&rsquo;s make an html file with two buttons (<a href="../../for_students/F-01-02.html" class="for_students">F-01-02.html</a>), and extend the first example.</p>
 <p>Here is that code applied to both buttons. Since I am using the function twice, it is useful to store it in a variable, although I could have written <code>button2.onclick = button1.onclick</code>.</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button1</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
-<span style="color:#00a8c8">const</span> <span style="color:#75af00">button2</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">);</span>
-<span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">button1</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
-<span style="color:#75af00">button1</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
-<span style="color:#75af00">button2</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">button1</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">button2</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">button1</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">button1</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">button2</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Again, understand what this program <a href="../../for_students/F-01-02.js" class="for_students">F-01-02.js</a> does before trying it. It doesn&rsquo;t do what you probably would want it to do.</p>
@@ -147,17 +147,17 @@ where we need it:</p>
 ></iframe>
 
 <p>The changed lines:</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">event</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">target</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">event</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">target</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Show you that you that event handler functions receive an argument (that is the event), and that these events have target elements.</p>
@@ -165,41 +165,43 @@ where we need it:</p>
 <h2 id="a-gratuitous-closure">A Gratuitous Closure</h2>
 <p>How could we have written the previous program if we didn&rsquo;t know about events?</p>
 <p>Here&rsquo;s one way: (the code is <a href="../../for_students/F-01-04.js" class="for_students">F-01-04.js</a>)</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">const</span> <span style="color:#75af00">button1</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
-<span style="color:#00a8c8">const</span> <span style="color:#75af00">button2</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">);</span>
-
-<span style="color:#00a8c8">function</span> <span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-    <span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-        <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
-    <span style="color:#111">}</span>
-    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
-
-<span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button1</span><span style="color:#111">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">button1</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button1&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">const</span> <span style="color:#75af00">button2</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#d88200">&#34;button2&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">function</span> <span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">const</span> <span style="color:#75af00">handler</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Changed!&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">onclick</span> <span style="color:#f92672">=</span> <span style="color:#75af00">handler</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">setHandler</span><span style="color:#111">(</span><span style="color:#75af00">button2</span><span style="color:#111">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>The most obvious difference here is that we are defining a function <code>setHandler</code> 
-that &ldquo;sets up&rdquo; a button. It takes a button as an argument, and sets the <code>onclick</code> 
+<p>The most obvious difference here is that we are defining a function <code>setHandler</code>
+that &ldquo;sets up&rdquo; a button. It takes a button as an argument, and sets the <code>onclick</code>
 slot of the button.</p>
 <p>There are (at least) two things here that may be slightly weird:</p>
 <ol>
-<li>We define a function inside of the function. Line 5 effectively runs the compiler each time the <code>setHandler</code> function is called. Because <code>setHandler</code> is called twice (lines 10 and 11), the compiler will compile that code twice. A good compiler is probably smart enough that it probably doesn&rsquo;t actually compile the code multiple times, but conceptually, you can think about the compiler being run twice.</li>
+<li>We define a function inside of the function. Line 5 effectively runs the compiler each time the <code>setHandler</code> function is called. Because <code>setHandler</code> is called twice (lines 11 and 12), the compiler will compile that code twice. A good compiler is probably smart enough that it probably doesn&rsquo;t actually compile the code multiple times, but conceptually, you can think about the compiler being run twice.</li>
 <li>The inner <code>handler</code> function uses the <code>button</code> variable that belongs to <code>setHandler</code>. Arguments (like <code>button</code>) are just variables, and obey the same scoping rules.</li>
 </ol>
 <p>This is a little tricky. Basically, for each button, we call <code>setHandler</code> to set it up. <code>setHandler</code> knows which button it is working on, because it has the button in its <code>button</code> parameter. <code>setHandler</code> runs the compiler and makes a new version of the handler function that it assigns to the button. This version has the right value for <code>button</code>.</p>

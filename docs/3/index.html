@@ -19,37 +19,37 @@
         
         
         
-		<div class="content post__content clearfix"><p>The nested scoping rules become more interesting when we start passing around those 
+		<div class="content post__content clearfix"><p>The nested scoping rules become more interesting when we start passing around those
 functions we create. We&rsquo;ll still use boring toy programs for this page.
 We&rsquo;ll get to a real application soon.</p>
 <h2 id="closure-1">Closure 1</h2>
 <p>Here&rsquo;s a simple function inside of a function:
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
-    <span style="color:#00a8c8">const</span> <span style="color:#75af00">g</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
-        <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
-    <span style="color:#111">}</span>
-    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">g</span><span style="color:#111">);</span>
-<span style="color:#111">}</span>
-<span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
-<span style="color:#75af00">b</span><span style="color:#111">();</span>
-<span style="color:#75af00">b</span><span style="color:#111">();</span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">const</span> <span style="color:#75af00">g</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">g</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">b</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">b</span><span style="color:#111">();</span></span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>Some things to note here:</p>
@@ -64,36 +64,36 @@ We&rsquo;ll get to a real application soon.</p>
 <p>The thing to observe: the function object not only contains the code (lines 3-6) it also &ldquo;encloses&rdquo; the variable defined on line 2.</p>
 <h2 id="two-closures">Two Closures</h2>
 <p>OK, Same function, but we will use it twice
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
-    <span style="color:#00a8c8">const</span> <span style="color:#75af00">g</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
-        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
-        <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
-    <span style="color:#111">}</span>
-    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">g</span><span style="color:#111">);</span>
-<span style="color:#111">}</span>
-<span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
-<span style="color:#00a8c8">let</span> <span style="color:#75af00">c</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
-<span style="color:#75af00">b</span><span style="color:#111">();</span>
-<span style="color:#75af00">b</span><span style="color:#111">();</span>
-<span style="color:#75af00">c</span><span style="color:#111">();</span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">function</span> <span style="color:#75af00">f</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">let</span> <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">const</span> <span style="color:#75af00">g</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">a</span> <span style="color:#f92672">=</span> <span style="color:#75af00">a</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span><span style="color:#111">(</span><span style="color:#75af00">g</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">let</span> <span style="color:#75af00">b</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">let</span> <span style="color:#75af00">c</span> <span style="color:#f92672">=</span> <span style="color:#75af00">f</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">b</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">b</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">c</span><span style="color:#111">();</span></span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>If you understood the previous example, you should see that the two calls to <code>b</code> (lines 11 and 12) will print 1 and 2 respecitvely. Figuring out what line 13 prints is a little trickier, and requires us to really understand what the closure does.</p>
@@ -105,27 +105,27 @@ We&rsquo;ll get to a real application soon.</p>
 <h2 id="closures-with-arguments">Closures with Arguments</h2>
 <p>Closure applies to function arguments as well - they are just like any other variables.</p>
 <p>Here&rsquo;s a toy example:
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#75af00">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-    <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">y</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#00a8c8">return</span> <span style="color:#75af00">x</span><span style="color:#f92672">+</span><span style="color:#75af00">y</span><span style="color:#111">;</span> <span style="color:#111">};</span>
-<span style="color:#111">}</span>
-<span style="color:#00a8c8">let</span> <span style="color:#75af00">a1</span> <span style="color:#f92672">=</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">);</span>
-<span style="color:#00a8c8">let</span> <span style="color:#75af00">a3</span> <span style="color:#f92672">=</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">);</span>
-
-<span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a1</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#111">));</span>     <span style="color:#75715e">// prints 6
-</span><span style="color:#75715e"></span><span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a3</span><span style="color:#111">(</span><span style="color:#ae81ff">7</span><span style="color:#111">));</span>     <span style="color:#75715e">// prints 10
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00a8c8">function</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#75af00">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">y</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#00a8c8">return</span> <span style="color:#75af00">x</span><span style="color:#f92672">+</span><span style="color:#75af00">y</span><span style="color:#111">;</span> <span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">let</span> <span style="color:#75af00">a1</span> <span style="color:#f92672">=</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">let</span> <span style="color:#75af00">a3</span> <span style="color:#f92672">=</span> <span style="color:#75af00">adder</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a1</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#111">));</span>     <span style="color:#75715e">// prints 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#75af00">a3</span><span style="color:#111">(</span><span style="color:#ae81ff">7</span><span style="color:#111">));</span>     <span style="color:#75715e">// prints 10
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>The <code>adder</code> function is a function that returns a function that adds an amount to its argument. Adder takes one argument <code>x</code>. It returns a function that takes one argument <code>y</code>. That function adds <code>x</code> and <code>y</code> together.</p>
