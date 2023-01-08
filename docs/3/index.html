@@ -60,7 +60,7 @@ We&rsquo;ll get to a real application soon.</p>
 <li>the variable <code>b</code> is assigned the result of <code>f</code> (which was the function formerly known as <code>g</code>)</li>
 <li>the function stored in <code>b</code> is called twice (on lines 10 and 11)</li>
 </ol>
-<p>Hopefully, it makes sense that this program will print 1 than 2. When we call the function stored in <code>b</code>, we are executing the function defined on lines 3-6 (which access the <code>a</code> variable, defined on line 2). The first time we call it, it increments <code>a</code> (which is 0, so it will get the value 1) and prints it (so it prints 1). The second time we call it, it increments <code>a</code> (which is 1, so it will get the value 2) and prints it.</p>
+<p>Hopefully, it makes sense that this program will print 1 then 2. When we call the function stored in <code>b</code>, we are executing the function defined on lines 3-6 (which access the <code>a</code> variable, defined on line 2). The first time we call it, it increments <code>a</code> (which is 0, so it will get the value 1) and prints it (so it prints 1). The second time we call it, it increments <code>a</code> (which is 1, so it will get the value 2) and prints it.</p>
 <p>The thing to observe: the function object not only contains the code (lines 3-6) it also &ldquo;encloses&rdquo; the variable defined on line 2.</p>
 <h2 id="two-closures">Two Closures</h2>
 <p>OK, Same function, but we will use it twice
