@@ -3,3 +3,5 @@ function handler() {
     button.innerHTML = "Changed!";
 }
 button.onclick = handler;
+
+
